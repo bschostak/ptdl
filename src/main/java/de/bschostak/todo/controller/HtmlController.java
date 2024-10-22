@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import de.bschostak.todo.model.User;
+import de.bschostak.todo.dto.UserInputDto;
 
 
 @Controller
 @RequestMapping("/todolist")
 public class HtmlController {
-
-    private static final Logger log = LoggerFactory.getLogger(HtmlController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HtmlController.class);
     
     @GetMapping
     public String index() {
@@ -23,8 +22,8 @@ public class HtmlController {
     }
 
     @PostMapping("/insert")
-    public String insertUserInput(@ModelAttribute User user) {
-        log.info("User input: {}", user);
+    public String insertUserInput(@ModelAttribute UserInputDto userInputDto) {
+        LOG.info("User input: {}", userInputDto);
         return "response";
     }
 }
